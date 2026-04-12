@@ -1,0 +1,91 @@
+############################
+# IntelliJ IDEA
+############################
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+############################
+# Java / Maven / Gradle
+############################
+target/
+build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+############################
+# Logs
+############################
+*.log
+logs/
+log/
+
+############################
+# OS Files
+############################
+.DS_Store
+Thumbs.db
+
+############################
+# Environment / Config
+############################
+.env
+.env.*
+application-local.yml
+application-local.properties
+application-dev.yml
+application-dev.properties
+
+############################
+# Compiled Files
+############################
+*.class
+*.jar
+*.war
+*.ear
+
+############################
+# Spring Boot
+############################
+spring.log
+
+############################
+# Temporary Files
+############################
+*.tmp
+*.swp
+*.bak
+*.orig
+
+############################
+# Test Reports
+############################
+/test-output/
+/surefire-reports/
+/failsafe-reports/
+
+############################
+# Coverage Reports
+############################
+/coverage/
+/jacoco.exec
+
+############################
+# Node (if frontend inside project)
+############################
+node_modules/
+dist/
+
+############################
+# VS Code (optional)
+############################
+.vscode/
+
+############################
+# Docker
+############################
+*.pid
+*.seed
+*.pid.lock
