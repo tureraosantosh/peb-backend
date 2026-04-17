@@ -7,9 +7,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.time.OffsetDateTime;
 
 @MappedSuperclass
+@Data
+@NoArgsConstructor
 public abstract class SoftDeletableEntity {
 
     @Id
@@ -37,11 +43,5 @@ public abstract class SoftDeletableEntity {
     public void preUpdate() {
         this.updatedAt = OffsetDateTime.now();
     }
-
-    public Long getId() { return id; }
-    public boolean isDeleted() { return deleted; }
-    public void setDeleted(boolean deleted) { this.deleted = deleted; }
-    public OffsetDateTime getCreatedAt() { return createdAt; }
-    public OffsetDateTime getUpdatedAt() { return updatedAt; }
 }
 

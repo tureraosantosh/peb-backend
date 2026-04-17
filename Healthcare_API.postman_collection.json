@@ -1,0 +1,958 @@
+{
+  "info": {
+    "_postman_id": "healthcare-api-collection",
+    "name": "Healthcare FHIR API",
+    "description": "Complete REST API collection for Healthcare FHIR Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Hello",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/hello",
+              "host": ["{{base_url}}"],
+              "path": ["hello"]
+            },
+            "description": "Simple health check endpoint"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Patients",
+      "item": [
+        {
+          "name": "Get All Patients",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/patients",
+              "host": ["{{base_url}}"],
+              "path": ["patients"]
+            },
+            "description": "Get list of all patients"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Patient by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/patients/{{patient_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["patients", "{{patient_id}}"]
+            },
+            "description": "Get patient details by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Patient FHIR Format",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/patients/{{patient_id}}/fhir",
+              "host": ["{{base_url}}"],
+              "path": ["patients", "{{patient_id}}", "fhir"]
+            },
+            "description": "Get patient data in FHIR format"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Intake Patients",
+      "item": [
+        {
+          "name": "Get All Intake Patients",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/patients",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patients"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Intake Patient by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/patients/{{patient_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patients", "{{patient_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Intake Patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientFirstName\": \"John\",\n  \"patientLastName\": \"Doe\",\n  \"patientId\": \"P001\",\n  \"dateOfBirth\": \"1990-01-15\",\n  \"gender\": \"M\",\n  \"patientMiddleName\": \"Michael\",\n  \"phoneNumber\": \"555-0123\",\n  \"streetAddress\": \"123 Main St\",\n  \"city\": \"New York\",\n  \"state\": \"NY\",\n  \"zipCode\": \"10001\",\n  \"notes\": \"Patient notes\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/patients",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patients"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Intake Patient",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientFirstName\": \"John\",\n  \"patientLastName\": \"Doe\",\n  \"patientId\": \"P001\",\n  \"dateOfBirth\": \"1990-01-15\",\n  \"gender\": \"M\",\n  \"patientMiddleName\": \"Michael\",\n  \"phoneNumber\": \"555-0123\",\n  \"streetAddress\": \"123 Main St\",\n  \"city\": \"New York\",\n  \"state\": \"NY\",\n  \"zipCode\": \"10001\",\n  \"notes\": \"Updated patient notes\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/patients/{{patient_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patients", "{{patient_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Intake Patient",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/patients/{{patient_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patients", "{{patient_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Appointments",
+      "item": [
+        {
+          "name": "Get All Appointments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/appointments",
+              "host": ["{{base_url}}"],
+              "path": ["api", "appointments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Appointment by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/appointments/{{appointment_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "appointments", "{{appointment_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Appointment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dateOfServiceStart\": \"2024-04-20T09:00:00+05:30\",\n  \"dateOfServiceEnd\": \"2024-04-20T10:00:00+05:30\",\n  \"transactionId\": \"TXN001\",\n  \"admissionType\": \"Urgent\",\n  \"patientClass\": \"Outpatient\",\n  \"expOrderId\": \"EXP001\",\n  \"appointmentType\": \"Consultation\",\n  \"priority\": \"High\",\n  \"facility\": \"Main Hospital\",\n  \"facilityNpi\": \"1234567890\",\n  \"facilityTin\": \"12-3456789\",\n  \"facilityFax\": \"555-0100\",\n  \"facilityAddress\": \"456 Hospital Dr\",\n  \"facilityCity\": \"New York\",\n  \"facilityState\": \"NY\",\n  \"zipCode\": \"10002\",\n  \"orderingFacilityName\": \"Clinic A\",\n  \"orderingFacilityNpi\": \"0987654321\",\n  \"orderingFacilityAddress\": \"789 Clinic St\",\n  \"orderingFacilityCity\": \"New York\",\n  \"orderingFacilityState\": \"NY\",\n  \"orderingFacilityZipCode\": \"10003\",\n  \"orderingFacilityFax\": \"555-0101\",\n  \"orderingFacilityPhone\": \"555-0102\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/appointments",
+              "host": ["{{base_url}}"],
+              "path": ["api", "appointments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Appointment",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dateOfServiceStart\": \"2024-04-20T10:00:00+05:30\",\n  \"dateOfServiceEnd\": \"2024-04-20T11:00:00+05:30\",\n  \"transactionId\": \"TXN001\",\n  \"admissionType\": \"Urgent\",\n  \"patientClass\": \"Outpatient\",\n  \"expOrderId\": \"EXP001\",\n  \"appointmentType\": \"Consultation\",\n  \"priority\": \"High\",\n  \"facility\": \"Main Hospital\",\n  \"facilityNpi\": \"1234567890\",\n  \"facilityTin\": \"12-3456789\",\n  \"facilityFax\": \"555-0100\",\n  \"facilityAddress\": \"456 Hospital Dr\",\n  \"facilityCity\": \"New York\",\n  \"facilityState\": \"NY\",\n  \"zipCode\": \"10002\",\n  \"orderingFacilityName\": \"Clinic A\",\n  \"orderingFacilityNpi\": \"0987654321\",\n  \"orderingFacilityAddress\": \"789 Clinic St\",\n  \"orderingFacilityCity\": \"New York\",\n  \"orderingFacilityState\": \"NY\",\n  \"orderingFacilityZipCode\": \"10003\",\n  \"orderingFacilityFax\": \"555-0101\",\n  \"orderingFacilityPhone\": \"555-0102\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/appointments/{{appointment_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "appointments", "{{appointment_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Appointment",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/appointments/{{appointment_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "appointments", "{{appointment_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Coverages",
+      "item": [
+        {
+          "name": "Get All Coverages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/coverages",
+              "host": ["{{base_url}}"],
+              "path": ["api", "coverages"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Coverage by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/coverages/{{coverage_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "coverages", "{{coverage_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Coverage",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"insuranceType\": \"Medical\",\n  \"insuranceName\": \"Blue Cross Blue Shield\",\n  \"memberId\": \"MEM123456\",\n  \"groupNumber\": \"GRP001\",\n  \"groupName\": \"Company Group\",\n  \"phone\": \"1-800-555-0123\",\n  \"policyNumber\": \"POL123456789\",\n  \"networkType\": \"PPO\",\n  \"coverageStatus\": \"Active\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/coverages",
+              "host": ["{{base_url}}"],
+              "path": ["api", "coverages"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Coverage",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"insuranceType\": \"Medical\",\n  \"insuranceName\": \"Blue Cross Blue Shield\",\n  \"memberId\": \"MEM123456\",\n  \"groupNumber\": \"GRP001\",\n  \"groupName\": \"Company Group\",\n  \"phone\": \"1-800-555-0123\",\n  \"policyNumber\": \"POL123456789\",\n  \"networkType\": \"PPO\",\n  \"coverageStatus\": \"Inactive\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/coverages/{{coverage_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "coverages", "{{coverage_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Coverage",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/coverages/{{coverage_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "coverages", "{{coverage_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Procedures",
+      "item": [
+        {
+          "name": "Get All Procedures",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/procedures",
+              "host": ["{{base_url}}"],
+              "path": ["api", "procedures"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Procedure by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/procedures/{{procedure_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "procedures", "{{procedure_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Procedure",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cptDescription\": \"Complete Blood Count\",\n  \"testName\": \"CBC\",\n  \"bodyPart\": \"Arm\",\n  \"requestedQuantity\": 1,\n  \"modifier\": \"-91\",\n  \"testGroupName\": \"Hematology\",\n  \"placeOfService\": \"Lab\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/procedures",
+              "host": ["{{base_url}}"],
+              "path": ["api", "procedures"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Procedure",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cptDescription\": \"Complete Blood Count with Differential\",\n  \"testName\": \"CBC with Diff\",\n  \"bodyPart\": \"Arm\",\n  \"requestedQuantity\": 2,\n  \"modifier\": \"-91\",\n  \"testGroupName\": \"Hematology\",\n  \"placeOfService\": \"Lab\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/procedures/{{procedure_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "procedures", "{{procedure_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Procedure",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/procedures/{{procedure_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "procedures", "{{procedure_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ICD Codes",
+      "item": [
+        {
+          "name": "Get All ICD Codes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/icd-codes",
+              "host": ["{{base_url}}"],
+              "path": ["api", "icd-codes"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get ICD Code by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/icd-codes/{{icd_code_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "icd-codes", "{{icd_code_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create ICD Code",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"icdCode\": \"E11.9\",\n  \"icdDescription\": \"Type 2 diabetes mellitus without complications\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/icd-codes",
+              "host": ["{{base_url}}"],
+              "path": ["api", "icd-codes"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update ICD Code",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"icdCode\": \"E11.9\",\n  \"icdDescription\": \"Type 2 diabetes mellitus - controlled\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/icd-codes/{{icd_code_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "icd-codes", "{{icd_code_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete ICD Code",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/icd-codes/{{icd_code_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "icd-codes", "{{icd_code_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Clinicals",
+      "item": [
+        {
+          "name": "Get All Clinicals",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/clinicals",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clinicals"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Clinical by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/clinicals/{{clinical_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clinicals", "{{clinical_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Clinical File",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/clinicals",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clinicals"]
+            },
+            "description": "Upload a clinical file (PDF, image, etc.)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Clinical File",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/clinicals/{{clinical_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clinicals", "{{clinical_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Download Clinical File",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/clinicals/{{clinical_id}}/download",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clinicals", "{{clinical_id}}", "download"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Clinical",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/clinicals/{{clinical_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clinicals", "{{clinical_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Locations",
+      "item": [
+        {
+          "name": "Get All Locations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/locations",
+              "host": ["{{base_url}}"],
+              "path": ["api", "locations"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Location by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/locations/{{location_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "locations", "{{location_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Location",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"facility\": \"Central Hospital\",\n  \"facilityNpi\": \"1234567890\",\n  \"facilityTin\": \"12-3456789\",\n  \"facilityFax\": \"555-0100\",\n  \"facilityAddress\": \"100 Hospital Ave\",\n  \"facilityCity\": \"Boston\",\n  \"facilityState\": \"MA\",\n  \"zipCode\": \"02101\",\n  \"orderingFacilityName\": \"Boston Clinic\",\n  \"orderingFacilityNpi\": \"0987654321\",\n  \"orderingFacilityAddress\": \"200 Clinic Dr\",\n  \"orderingFacilityCity\": \"Boston\",\n  \"orderingFacilityState\": \"MA\",\n  \"orderingFacilityZipCode\": \"02102\",\n  \"orderingFacilityFax\": \"555-0101\",\n  \"orderingFacilityPhone\": \"555-0102\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/locations",
+              "host": ["{{base_url}}"],
+              "path": ["api", "locations"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Location",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"facility\": \"Central Hospital\",\n  \"facilityNpi\": \"1234567890\",\n  \"facilityTin\": \"12-3456789\",\n  \"facilityFax\": \"555-0100\",\n  \"facilityAddress\": \"100 Hospital Ave\",\n  \"facilityCity\": \"Boston\",\n  \"facilityState\": \"MA\",\n  \"zipCode\": \"02101\",\n  \"orderingFacilityName\": \"Boston Clinic\",\n  \"orderingFacilityNpi\": \"0987654321\",\n  \"orderingFacilityAddress\": \"200 Clinic Dr\",\n  \"orderingFacilityCity\": \"Boston\",\n  \"orderingFacilityState\": \"MA\",\n  \"orderingFacilityZipCode\": \"02102\",\n  \"orderingFacilityFax\": \"555-0101\",\n  \"orderingFacilityPhone\": \"555-0103\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/locations/{{location_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "locations", "{{location_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Location",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/locations/{{location_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "locations", "{{location_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Practitioners",
+      "item": [
+        {
+          "name": "Get All Practitioners",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/practitioners",
+              "host": ["{{base_url}}"],
+              "path": ["api", "practitioners"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Practitioner by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/practitioners/{{practitioner_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "practitioners", "{{practitioner_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Practitioner",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"physicianFirstName\": \"Sarah\",\n  \"physicianLastName\": \"Johnson\",\n  \"physicianFax\": \"555-0200\",\n  \"physicianAddress\": \"300 Doctor Ln\",\n  \"physicianCity\": \"Chicago\",\n  \"physicianState\": \"IL\",\n  \"physicianNpi\": \"1122334455\",\n  \"zipCode\": \"60601\",\n  \"physicianNumber\": \"DOC001\",\n  \"physicianExternalId\": \"EXT001\",\n  \"physicianTin\": \"12-1234567\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/practitioners",
+              "host": ["{{base_url}}"],
+              "path": ["api", "practitioners"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Practitioner",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"physicianFirstName\": \"Sarah\",\n  \"physicianLastName\": \"Johnson\",\n  \"physicianFax\": \"555-0200\",\n  \"physicianAddress\": \"300 Doctor Ln\",\n  \"physicianCity\": \"Chicago\",\n  \"physicianState\": \"IL\",\n  \"physicianNpi\": \"1122334455\",\n  \"zipCode\": \"60601\",\n  \"physicianNumber\": \"DOC001\",\n  \"physicianExternalId\": \"EXT001\",\n  \"physicianTin\": \"12-1234567\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/practitioners/{{practitioner_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "practitioners", "{{practitioner_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Practitioner",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/practitioners/{{practitioner_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "practitioners", "{{practitioner_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Ordering Practitioners",
+      "item": [
+        {
+          "name": "Get All Ordering Practitioners",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/ordering-practitioners",
+              "host": ["{{base_url}}"],
+              "path": ["api", "ordering-practitioners"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Ordering Practitioner by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/ordering-practitioners/{{ordering_practitioner_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "ordering-practitioners", "{{ordering_practitioner_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Ordering Practitioner",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderingPhysicianFirstName\": \"Michael\",\n  \"orderingPhysicianLastName\": \"Smith\",\n  \"orderingPhysicianNumber\": \"OP001\",\n  \"orderingPhysicianFax\": \"555-0300\",\n  \"orderingPhysicianExternalId\": \"OP_EXT001\",\n  \"orderingPhysicianAddress\": \"400 Order St\",\n  \"orderingPhysicianCity\": \"Austin\",\n  \"orderingPhysicianState\": \"TX\",\n  \"orderingPhysicianNpi\": \"5566778899\",\n  \"orderingPhysicianTin\": \"12-9876543\",\n  \"orderingPhysicianZipCode\": \"78701\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/ordering-practitioners",
+              "host": ["{{base_url}}"],
+              "path": ["api", "ordering-practitioners"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Ordering Practitioner",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderingPhysicianFirstName\": \"Michael\",\n  \"orderingPhysicianLastName\": \"Smith\",\n  \"orderingPhysicianNumber\": \"OP001\",\n  \"orderingPhysicianFax\": \"555-0300\",\n  \"orderingPhysicianExternalId\": \"OP_EXT001\",\n  \"orderingPhysicianAddress\": \"400 Order St\",\n  \"orderingPhysicianCity\": \"Austin\",\n  \"orderingPhysicianState\": \"TX\",\n  \"orderingPhysicianNpi\": \"5566778899\",\n  \"orderingPhysicianTin\": \"12-9876543\",\n  \"orderingPhysicianZipCode\": \"78702\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/ordering-practitioners/{{ordering_practitioner_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "ordering-practitioners", "{{ordering_practitioner_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Ordering Practitioner",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/ordering-practitioners/{{ordering_practitioner_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "ordering-practitioners", "{{ordering_practitioner_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "patient_id",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "appointment_id",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "coverage_id",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "procedure_id",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "icd_code_id",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "clinical_id",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "location_id",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "practitioner_id",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "ordering_practitioner_id",
+      "value": "1",
+      "type": "string"
+    }
+  ]
+}
