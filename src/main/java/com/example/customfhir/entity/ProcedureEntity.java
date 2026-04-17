@@ -18,6 +18,8 @@ public class ProcedureEntity extends SoftDeletableEntity {
     @Column private String modifier;
     @Column private String testGroupName;
     @Column private String placeOfService;
+    @Column private String cptCode;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id")

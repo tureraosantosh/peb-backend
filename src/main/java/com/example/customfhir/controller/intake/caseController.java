@@ -21,12 +21,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/api/intake")
-public class IntakeController {
+@RequestMapping("/api/case")
+public class caseController {
 
     private final IntakeRecordService service;
 
-    public IntakeController(IntakeRecordService service) {
+    public caseController(IntakeRecordService service) {
         this.service = service;
     }
 
