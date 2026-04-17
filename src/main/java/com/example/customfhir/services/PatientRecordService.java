@@ -45,7 +45,15 @@ public class PatientRecordService {
                 record.getMedicalRecordNumber(),
                 record.getFirstName(),
                 record.getLastName(),
-                record.getBirthDate()
+                record.getBirthDate(),
+                record.getGender(),
+                record.getMiddleName(),
+                record.getPhoneNumber(),
+                record.getStreetAddress(),
+                record.getCity(),
+                record.getState(),
+                record.getZipCode(),
+                record.getNotes()
         );
     }
 }

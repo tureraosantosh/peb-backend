@@ -2,6 +2,9 @@ package com.example.customfhir.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +19,11 @@ public class CoverageEntity extends SoftDeletableEntity {
     @Column private String policyNumber;
     @Column private String networkType;
     @Column private String coverageStatus;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "patient_id")
+    private IntakePatientEntity patient;
+
     public String getInsuranceType() { return insuranceType; } public void setInsuranceType(String v) { insuranceType = v; }
     public String getInsuranceName() { return insuranceName; } public void setInsuranceName(String v) { insuranceName = v; }
     public String getMemberId() { return memberId; } public void setMemberId(String v) { memberId = v; }
@@ -25,5 +33,6 @@ public class CoverageEntity extends SoftDeletableEntity {
     public String getPolicyNumber() { return policyNumber; } public void setPolicyNumber(String v) { policyNumber = v; }
     public String getNetworkType() { return networkType; } public void setNetworkType(String v) { networkType = v; }
     public String getCoverageStatus() { return coverageStatus; } public void setCoverageStatus(String v) { coverageStatus = v; }
+    public IntakePatientEntity getPatient() { return patient; } public void setPatient(IntakePatientEntity p) { this.patient = p; }
 }
 

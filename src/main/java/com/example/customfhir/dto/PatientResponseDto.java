@@ -7,6 +7,14 @@ public record PatientResponseDto(
         String medicalRecordNumber,
         String firstName,
         String lastName,
-        LocalDate birthDate
+        LocalDate birthDate,
+        String gender,
+        String middleName,
+        String phoneNumber,
+        String streetAddress,
+        String city,
+        String state,
+        String zipCode,
+        String notes
 ) {
 }

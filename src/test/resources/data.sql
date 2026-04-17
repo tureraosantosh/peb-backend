@@ -1,0 +1,1 @@
+INSERT INTO patient_records (id, medical_record_number, first_name, last_name, birth_date) VALUES (1, 'MRN-1001', 'John', 'Doe', '1980-01-01');
